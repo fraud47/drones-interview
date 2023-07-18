@@ -56,8 +56,8 @@ Update the `application.yml` file with the following configuration:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/drones
-    username: fullstop
-    password: 619619
+    username: fraud47
+    password: 12465
   jpa:
     hibernate:
       ddl-auto: create
@@ -71,8 +71,30 @@ spring:
 ```
 
 ## Usage
+    URL: /api/v1/drones
+    HTTP Method: POST
+    Request Body: DroneDto (JSON)
+    Response: DroneDto (JSON)
+    Status Codes:
+        201 - Created: If the drone is successfully registered.
+        400 - Bad Request: If the request body is invalid.
+        500 - Internal Server Error: If an unexpected error occurs.
 
-[Provide instructions on how to use the Drone Medication Loading System, including any command-line commands or configurations required. Provide examples if applicable.]
+    URL: /api/v1/drones/available-drones
+    HTTP Method: GET
+    Response: List of DroneDto (JSON)
+    Status Codes:
+        200 - OK: If the available drones are successfully retrieved.
+        500 - Internal Server Error: If an unexpected error occurs.
+
+    URL: /api/v1/drones/check-battery-levels/{droneId}
+    HTTP Method: GET
+    Path Variable: droneId (Long)
+    Response: BatteryLevelResponse (JSON)
+    Status Codes:
+        200 - OK: If the battery level is successfully retrieved.
+        404 - Not Found: If the specified droneId does not exist.
+        500 - Internal Server Error: If an unexpected error occurs.
 
 ## Contributing
 
@@ -85,8 +107,4 @@ Contributions are welcome! If you want to contribute to the Drone Medication Loa
 5. Submit a pull request.
 
 Please ensure that your contributions adhere to the project's coding standards and conventions.
-
-## License
-
-[Specify the license under which the project is distributed. Provide a link to the license if possible.]
 
